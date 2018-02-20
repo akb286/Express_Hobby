@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ./partials/head %>
+</head>
+
+<body>
+  <header>
+    <% include ./partials/header %>
+  </header>
+  <div class="container">
+    <% var url = "/gearList/" + gearList.id + "?_method=PUT" %>
+      <form method="POST" action=<%=u rl %> >
+        <input required name="title" value=<%=m ovie.title %> />
+        <a href="/gearList" class="btn red">Cancel</a>
+        <button class="btn">Save</button>
+      </form>
+  </div>
+  <table class='table col m8 s12'>
+    <thead>
+      <th>Title</th>
+      <th>Edit</th>
+      <th>x</th>
+    </thead>
+    <tbody>
+      <% gearList.forEach( function(gearList) { %>
+        <% var url = "/gearList/" + gearList.id + "?_method=DELETE" %>
+          <% var editUrl = "gearList/" + gearList.id + "/edit" %>
+            <tr>
+              <td>
+                <%= gearList.title %>
+              </td>
+              <td>
+                <a class="btn" href=<%=e ditUrl %>>Edit</a>
+              </td>
+              <form method="POST" action=<%=u rl %>>
+                <button class="btn red">Delete</button>
+              </form>
+              </td>
+            </tr>
+            <% }); %>
+    </tbody>
+  </table>
+</body>
+
+</html>
